@@ -1,0 +1,88 @@
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Provider as PaperProvider } from 'react-native-paper';
+import TelaInicial from './screens/TelaInicial';
+import Dashboard from './screens/Dashboard';
+import BuscaProfissionais from './screens/BuscaProfissionais';
+import ConsultaVirtual from './screens/ConsultaVirtual';
+import AgendaConsultas from './screens/AgendaConsultas';
+import DicasSaude from './screens/DicasSaude';
+import PerfilUsuario from './screens/PerfilUsuario';
+
+const Stack = createStackNavigator();
+
+export default function App() {
+return (
+<PaperProvider>
+<NavigationContainer>
+<Stack.Navigator initialRouteName="TelaInicial">
+<Stack.Screen name="TelaInicial" component={TelaInicial} />
+<Stack.Screen name="Dashboard" component={Dashboard} />
+<Stack.Screen name="BuscaProfissionais" component={BuscaProfissionais} />
+<Stack.Screen name="ConsultaVirtual" component={ConsultaVirtual} />
+<Stack.Screen name="AgendaConsultas" component={AgendaConsultas} />
+<Stack.Screen name="DicasSaude" component={DicasSaude} />
+<Stack.Screen name="PerfilUsuario" component={PerfilUsuario} />
+</Stack.Navigator>
+</NavigationContainer>
+</PaperProvider>
+);
+}
+
+// screens/TelaInicial.js
+import React from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
+
+export default function TelaInicial({ navigation }) {
+return (
+<View style={styles.container}>
+<Text style={styles.title}>Bem-vindo ao Saúde Total</Text>
+<Button title="Login" onPress={() => navigation.navigate('Dashboard')} />
+<Button title="Cadastro" onPress={() => navigation.navigate('Dashboard')} />
+</View>
+);
+}
+
+const styles = StyleSheet.create({
+container: {
+flex: 1,
+justifyContent: 'center',
+alignItems: 'center',
+padding: 20,
+},
+title: {
+fontSize: 24,
+marginBottom: 20,
+},
+});
+
+// screens/Dashboard.js
+import React from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
+
+export default function Dashboard({ navigation }) {
+return (
+<View style={styles.container}>
+<Text style={styles.title}>Dashboard</Text>
+<Button title="Buscar Profissionais" onPress={() => navigation.navigate('BuscaProfissionais')} />
+<Button title="Consulta Virtual" onPress={() => navigation.navigate('ConsultaVirtual')} />
+<Button title="Agenda de Consultas" onPress={() => navigation.navigate('AgendaConsultas')} />
+<Button title="Dicas de Saúde" onPress={() => navigation.navigate('DicasSaude')} />
+<Button title="Perfil do Usuário" onPress={() => navigation.navigate('PerfilUsuario')} />
+</View>
+);
+}
+
+const styles = StyleSheet.create({
+container: {
+flex: 1,
+justifyContent: 'center',
+alignItems: 'center',
+padding: 20,
+},
+title: {
+fontSize: 24,
+marginBottom: 20,
+},
+});
